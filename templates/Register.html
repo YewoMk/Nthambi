@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-in</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+    {{ bootstrap.load_css() }}
+</head>
+<body>
+    <div class="form-navbar">
+        <div class="logo">
+            <h1>nthambi</h1>
+        </div>
+        <div class="sign-btn">
+            <button class="btn btn-primary"><a href="{{ url_for('login') }}" class="text-white text-decoration-none">Sign in</a></button>
+        </div>
+    </div>
+    <div class="form-container">
+        <form method="post" class="needs-validation" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control", placeholder="Enter your name") }}
+                {% if form.username.errors %}
+                    <div class="text-danger">
+                        {{ form.username.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", placeholder="Enter your email") }}
+                {% if form.email.errors %}
+                    <div class="text-danger">
+                        {{ form.email.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control", placeholder="Enter your password") }}
+                {% if form.password.errors %}
+                    <div class="text-danger">
+                        {{ form.password.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.password2.label(class="form-label") }}
+                {{ form.password2(class="form-control", placeholder="Confirm your password") }}
+                {% if form.password2.errors %}
+                    <div class="text-danger">
+                        {{ form.password2.errors[0] }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+    {{ bootstrap.load_js() }}
+</body>
+</html>

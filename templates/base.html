@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <!-- link rel="stylesheet" href="styles.css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> --> 
+       <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+        <title>{%block title %}Nthambi{%endblock%}</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>Nthambi</h1>
+                </div>
+                <div class="menu">
+                    <ul class="nav-links">
+                        <li>
+                            <a href="#">
+                                JOIN US 
+                                <i class="fas fa-chevron-down dropdown-icon"></i>
+                            </a> 
+                            <ul class="dropdown">
+                                <li><a href="#">DONATE NOW</a></li>
+                                <li><a href="#">PARTNER WITH US</a></li>
+                                <li><a href="#">CAMPAIGN WITH US</a></li>
+                                <li><a href="#">WORK WITH US</a></li>
+                            
+                            </ul>
+                        </li>
+                        <li><a href="#">OUR WORK</a> </li>
+                        <li><a href="#">IMPACT</a> </li>
+                        <li><a href="#">VOLUNTEER</a></li>
+
+                    </ul>
+                </div>
+                <div class="btn">
+                    <button>DONATE</button>
+                </div>
+                <img src="{{url_for('static', filename='menu-btn.png')}}" alt="" class="menu-btn">
+            </nav >
+        </header>
+        <script>
+            const menuBtn = document.querySelector('.menu-btn')
+            const navLinks = document.querySelector('.nav-links')
+
+             menuBtn.addEventListener('click', () =>  {
+                navLinks.classList.toggle('mobile-menu')
+             })
+
+        </script>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    
+        {%block content%} {%endblock%}
+       
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+    {{ bootstrap.load_css() }}
+
+    <title>Reset</title>
+</head>
+<body>
+    <div class="form-navbar">
+        <div class="logo">
+            <h1>nthambi</h1>
+        </div>
+        <div class="sign-btn">
+            <button class="btn btn-primary">
+                <a href="{{ url_for('Register') }}" class="text-white text-decoration-none">Sign up</a>
+            </button>
+        </div>
+    </div>
+    <div class="form-container">
+        <form action="/reset" method="post">
+            {{ form.hidden_tag() }}
+            <div class="input-email">
+                {{ form.email}}
+            </div>
+            <div class="input-submit">
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+    {{ bootstrap.load_js() }}
+</body>
+</html>
