@@ -1,0 +1,13 @@
+
+Flask
+Flask-WTF
+WTForms
+Flask-Bootstrap5
+Flask-SQLAlchemy
+Flask-Bcrypt
+Flask-Login
+itsdangerous
+Flask-Mail
+requests
+email-validator
+
